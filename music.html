@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DA Boys Home - Music53</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .content-container {
+            margin: 50px auto;
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="content-container">
+    <h1>Music53</h1>
+    <p>Enjoy the music content from the Music53 repository.</p>
+    <div id="repo-content"></div>
+</div>
+
+<script>
+    async function loadRepoContent() {
+        const response = await fetch('https://api.github.com/repos/roanfyne/Music53/contents'); // Adjust as necessary
+        const data = await response.json();
+
+        const repoContentDiv = document.getElementById('repo-content');
+        data.forEach(item => {
+            const itemHtml = `<p><a href="${item.html_url}" target="_blank">${item.name}</a></p>`;
+            repoContentDiv.innerHTML += itemHtml;
+        });
+    }
+
+    loadRepoContent();
+</script>
+
+</body>
+</html>
